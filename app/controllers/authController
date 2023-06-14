@@ -1,15 +1,31 @@
 const { StatusCodes } = require('http-status-codes')
+const User = require('../model/User')
 
 const register = async (req, resp) => {
-  console.log('register')
+  const { name, email, password } = req.body
+
+  if (!name || !email || !password) {
+    throw new Error('BadRequest')
+    // resp.status(StatusCodes.BAD_REQUEST).json({BadRequest :"BadRequest"})
+  }
+
+  const findEmail = await User.findOne({ email: email })
+  if (findEmail) {
+    // throw new Error('email Already exist')
+    resp.status(StatusCodes.BAD_REQUEST).json({ badRe: 'email already Exist' })
+  }
+
+  const createdUser = await User.create({ name, email, password })
+
+  resp.status(StatusCodes.OK).json({ User: createdUser })
 }
 
 const login = async (req, resp) => {
-  console.log('login')
+  resp.status(StatusCodes.OK).json({ login: 'login' })
 }
 
 const logout = async (req, resp) => {
-  console.log('log out')
+  resp.status(StatusCodes.OK).json({ logOut: 'logOut' })
 }
 
 module.exports = {
