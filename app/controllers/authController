@@ -1,0 +1,19 @@
+const { StatusCodes } = require('http-status-codes')
+
+const register = async (req, resp) => {
+  console.log('register')
+}
+
+const login = async (req, resp) => {
+  console.log('login')
+}
+
+const logout = async (req, resp) => {
+  console.log('log out')
+}
+
+module.exports = {
+  register,
+  login,
+  logout
+}
