@@ -27,4 +27,10 @@
 - [] check if email already in use
 - [] ignore 'role'
 - [] alternative 'admin' setup
--
+
+
+#### handle Password
+- [] UserSchema.pre('save') - hook
+- this points to  User
+- bcrypt.genSalt - number  round
+- bcrypt
